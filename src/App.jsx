@@ -1,13 +1,12 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { MainLayout } from './layout/MainLayout/MainLayout'
-import { main_pages } from './router/Router'
 import { nanoid } from 'nanoid'
 import { BrandsPages } from './page/BrandPages'
 import NavHook from './hook/Nav-hook'
 import { NotFound } from './page/NotFound'
+import main_pages from './router/Router'
 
-console.log();
 const App = () => {
   NavHook()
   return (
