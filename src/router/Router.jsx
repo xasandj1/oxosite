@@ -3,29 +3,35 @@ import { CreateProduct } from "../page/CreateProduct";
 import { Heart } from "../page/Heart";
 import { Home } from "../page/Home";
 import { Login } from "../page/Login";
-import { NotFound } from "../page/NotFound";
 import { Profile } from "../page/Profile/Profile";
+
 const isAuthenticated = () => {
     const token = localStorage.getItem('token');
-    return token; 
+    return !!token;
 };
 
-export const main_pages = [
+const isNewUser = () => {
+    const isNew = localStorage.getItem('isNewUser');
+    return !!isNew; 
+};
+
+const main_pages = [
     {
         component: <Home />,
-        exact: true
+        exact: true,
+        path: "/"
     },
     {
         component: <Login />,
         path: "/signup"
     },
-
     {
         component: <Profile />,
         path: "/account"
     },
 ];
-if (isAuthenticated()) {
+
+if (isAuthenticated() || isNewUser()) {
     main_pages.push(
         {
             component: <CreateProduct />,
@@ -41,3 +47,5 @@ if (isAuthenticated()) {
         }
     );
 }
+
+export default main_pages;
